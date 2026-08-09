@@ -130,8 +130,8 @@ If after 5 attempts all generated codes collide (statistically negligible unless
 
 | File | Purpose |
 |---|---|
-| [app/schemas.py](file:///c:/Users/nihar/url-shortener/app/schemas.py) | Pydantic validation schemas (`URLShortenRequest`, `URLShortenResponse`) |
-| [app/utils.py](file:///c:/Users/nihar/url-shortener/app/utils.py) | Base62 random short code generator using `secrets` |
-| [app/routers/links.py](file:///c:/Users/nihar/url-shortener/app/routers/links.py) | `POST /shorten` route with savepoint-based retry logic |
-| [app/main.py](file:///c:/Users/nihar/url-shortener/app/main.py) | Main FastAPI application instance and router registration |
-| [tests/test_shorten.py](file:///c:/Users/nihar/url-shortener/tests/test_shorten.py) | Automated test suite covering success, validation, retry, and exhaustion |
+| [app/schemas.py](../app/schemas.py) | Pydantic validation schemas (`URLShortenRequest`, `URLShortenResponse`) |
+| [app/utils.py](../app/utils.py) | Base62 random short code generator using `secrets` |
+| [app/routers/links.py](../app/routers/links.py) | `POST /shorten` route with savepoint-based retry logic |
+| [app/main.py](../app/main.py) | Main FastAPI application instance and router registration |
+| [tests/test_shorten.py](../tests/test_shorten.py) | Automated test suite covering success, validation, retry, and exhaustion |

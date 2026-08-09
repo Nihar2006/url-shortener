@@ -49,7 +49,7 @@ When designing analytics for high-throughput systems, engineers frequently face 
 ## 2. Database Schema & Migration
 
 ### The `click_events` Table Definition
-In [app/models.py](file:///c:/Users/nihar/url-shortener/app/models.py):
+In [app/models.py](../app/models.py):
 
 ```python
 class ClickEvent(Base):
@@ -74,7 +74,7 @@ class ClickEvent(Base):
 
 ## 3. The Alembic Migration File
 
-The migration file generated under [alembic/versions/6dbe6efd9d5d_create_click_events_table.py](file:///c:/Users/nihar/url-shortener/alembic/versions/6dbe6efd9d5d_create_click_events_table.py):
+The migration file generated under [alembic/versions/6dbe6efd9d5d_create_click_events_table.py](../alembic/versions/6dbe6efd9d5d_create_click_events_table.py):
 
 ```python
 """create click_events table
@@ -114,7 +114,7 @@ def downgrade() -> None:
 
 ## 4. Endpoint Implementation: Atomic Dual-Write
 
-In [app/routers/links.py](file:///c:/Users/nihar/url-shortener/app/routers/links.py), both updates happen within a single ACID transaction:
+In [app/routers/links.py](../app/routers/links.py), both updates happen within a single ACID transaction:
 
 ```python
 # 1. Extract client IP (checking X-Forwarded-For header in case of reverse proxy)
@@ -141,7 +141,7 @@ await db.commit()
 
 ## 5. Summary of Created & Updated Files
 
-* **[app/models.py](file:///c:/Users/nihar/url-shortener/app/models.py)**: Added `ClickEvent` model with foreign key relationship to `Link`.
-* **[alembic/versions/6dbe6efd9d5d_create_click_events_table.py](file:///c:/Users/nihar/url-shortener/alembic/versions/6dbe6efd9d5d_create_click_events_table.py)**: Generated and applied migration creating the `click_events` table and index.
-* **[app/routers/links.py](file:///c:/Users/nihar/url-shortener/app/routers/links.py)**: Updated `GET /{short_code}` to log IP, User-Agent, and increment `click_count`.
-* **[tests/test_redirect.py](file:///c:/Users/nihar/url-shortener/tests/test_redirect.py)**: Added integration tests asserting `ClickEvent` records are inserted with correct IP, User-Agent, and timestamp.
+* **[app/models.py](../app/models.py)**: Added `ClickEvent` model with foreign key relationship to `Link`.
+* **[alembic/versions/6dbe6efd9d5d_create_click_events_table.py](../alembic/versions/6dbe6efd9d5d_create_click_events_table.py)**: Generated and applied migration creating the `click_events` table and index.
+* **[app/routers/links.py](../app/routers/links.py)**: Updated `GET /{short_code}` to log IP, User-Agent, and increment `click_count`.
+* **[tests/test_redirect.py](../tests/test_redirect.py)**: Added integration tests asserting `ClickEvent` records are inserted with correct IP, User-Agent, and timestamp.

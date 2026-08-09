@@ -135,8 +135,8 @@ unique_ips = (await db.execute(unique_ips_stmt)).scalar() or 0
         │              │
         ▼              ▼
 ┌──────────────┐  ┌─────────────────────────────────────────────────┐
-│ Return 404   │  │ 1. Read fast counter: link.click_count           │
-│ Not Found    │  │ 2. Query COUNT(DISTINCT ip_address)              │
+│ Return 404   │  │ 1. Read fast counter: link.click_count          │
+│ Not Found    │  │ 2. Query COUNT(DISTINCT ip_address)             │
 └──────────────┘  │ 3. Query GROUP BY DATE(clicked_at) (last 7 days)│
                   └────────────────────────┬────────────────────────┘
                                            │
@@ -151,6 +151,6 @@ unique_ips = (await db.execute(unique_ips_stmt)).scalar() or 0
 
 ## 5. Summary of Created & Updated Files
 
-* **[app/schemas.py](file:///c:/Users/nihar/url-shortener/app/schemas.py)**: Added `DailyClicks` and `LinkStatsResponse` schemas.
-* **[app/routers/links.py](file:///c:/Users/nihar/url-shortener/app/routers/links.py)**: Added `GET /{short_code}/stats` route with `GROUP BY` and `COUNT(DISTINCT)` queries.
-* **[tests/test_stats.py](file:///c:/Users/nihar/url-shortener/tests/test_stats.py)**: Added integration tests covering date grouping, 7-day cutoff window, unique IP deduplication, empty stats, and 404 responses.
+* **[app/schemas.py](../app/schemas.py)**: Added `DailyClicks` and `LinkStatsResponse` schemas.
+* **[app/routers/links.py](../app/routers/links.py)**: Added `GET /{short_code}/stats` route with `GROUP BY` and `COUNT(DISTINCT)` queries.
+* **[tests/test_stats.py](../tests/test_stats.py)**: Added integration tests covering date grouping, 7-day cutoff window, unique IP deduplication, empty stats, and 404 responses.

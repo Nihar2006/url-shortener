@@ -85,8 +85,8 @@ Because of this B-tree index in PostgreSQL:
 
 ## 5. Summary of Created Components
 
-* **Route Implementation**: Added `GET /{short_code}` to [app/routers/links.py](file:///c:/Users/nihar/url-shortener/app/routers/links.py) using `RedirectResponse(url=link.original_url, status_code=302)`.
-* **Automated Tests**: Added [tests/test_redirect.py](file:///c:/Users/nihar/url-shortener/tests/test_redirect.py) verifying:
+* **Route Implementation**: Added `GET /{short_code}` to [app/routers/links.py](../app/routers/links.py) using `RedirectResponse(url=link.original_url, status_code=302)`.
+* **Automated Tests**: Added [tests/test_redirect.py](../tests/test_redirect.py) verifying:
   * Redirects return HTTP 302 with the exact `Location` header.
   * Consecutive visits increment `click_count` in PostgreSQL from 0 to 1, then to 2.
   * Non-existent short codes return HTTP 404 with a structured error detail.
