@@ -7,9 +7,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Include endpoint routers
-app.include_router(links_router)
-
+# 1. Define static top-level routes (e.g. /health) BEFORE wildcard parameter routes
 @app.get("/health", tags=["health"])
 async def health_check():
     return {"status": "ok"}
+
+# 2. Include dynamic endpoint routers containing parameter path patterns (e.g. /{short_code})
+app.include_router(links_router)
