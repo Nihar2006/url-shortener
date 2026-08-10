@@ -15,6 +15,16 @@ A high-performance, concurrency-safe URL shortener and real-time analytics backe
 
 ---
 
+## 🌐 Live Demo
+
+* **Live Web App**: [https://nihar-fastlink-api.onrender.com](https://nihar-fastlink-api.onrender.com)  
+  *Visiting the root URL (`/`) provides a clean web interface to shorten URLs directly in your browser.*
+* **Interactive API Explorer**: [https://nihar-fastlink-api.onrender.com/docs](https://nihar-fastlink-api.onrender.com/docs) (Swagger UI)
+
+> ⏳ **Note**: This service is hosted on Render's free tier. If the instance is sleeping due to inactivity, the initial request may take **30–60 seconds** to wake up the server.
+
+---
+
 ## 🛠️ Tech Stack
 
 | Layer | Technology | Purpose |
@@ -158,7 +168,9 @@ curl http://localhost:8000/k9xL2p/stats
    docker compose up --build
    ```
    * PostgreSQL initializes with active healthchecks (`pg_isready`).
-   * FastAPI waits for the database to become healthy, automatically runs `alembic upgrade head`, and starts Uvicorn on `http://localhost:8000`.
+   * FastAPI waits for the database to become healthy, automatically runs `alembic upgrade head`, and serves the application:
+     * **Web Frontend**: `http://localhost:8000/`
+     * **Interactive API Documentation**: `http://localhost:8000/docs`
 
 ---
 
@@ -181,7 +193,7 @@ curl http://localhost:8000/k9xL2p/stats
 3. **Configure environment variables**:
    Create a `.env` file in the project root (see [.env.example](.env.example)):
    ```env
-   DATABASE_URL=postgresql+asyncpg://postgres:devpass123@localhost:5432/urlshortener
+   DATABASE_URL=postgresql+asyncpg://postgres:yourpassword@localhost:5432/urlshortener
    ```
 
 4. **Run database migrations**:
@@ -193,7 +205,8 @@ curl http://localhost:8000/k9xL2p/stats
    ```bash
    uvicorn app.main:app --reload --port 8000
    ```
-   Access interactive API documentation at: `http://localhost:8000/docs`.
+   * **Web Frontend**: Access the web interface at `http://localhost:8000/`
+   * **API Explorer**: Access interactive API documentation at `http://localhost:8000/docs`
 
 ---
 
