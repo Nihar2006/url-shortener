@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devpass123}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-yourpassword}
       POSTGRES_DB: ${POSTGRES_DB:-urlshortener}
     ports:
       - "5432:5432"
@@ -27,7 +27,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-devpass123}@db:5432/${POSTGRES_DB:-urlshortener}
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-yourpassword}@db:5432/${POSTGRES_DB:-urlshortener}
     depends_on:
       db:
         condition: service_healthy
